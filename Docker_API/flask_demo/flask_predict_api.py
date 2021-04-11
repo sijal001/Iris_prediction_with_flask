@@ -4,12 +4,7 @@ from flasgger import Swagger
 import numpy as np
 import pandas as pd
 
-
-
-# for flagger user interface :: "localhost:5000/apidocs/"
-
-# Load pickel file as binary 'rb'.
-with open('./models/rf.pkl', 'rb') as model_file:
+with open('/var/www/flask_predict_api/rf.pkl', 'rb') as model_file:
     model = pickle.load(model_file)
 
 app = Flask(__name__)
@@ -17,8 +12,6 @@ swagger = Swagger(app)
 
 @app.route('/predict')
 def predict_iris():
-    # for flasgger to have user interface
-
     """Example endpoint returning a prediction of iris
     ---
     parameters:
@@ -49,8 +42,6 @@ def predict_iris():
 
 @app.route('/predict_file', methods=["POST"])
 def predict_iris_file():
-    # for flasgger to have user interface
-
     """Example file endpoint returning a prediction of iris
     ---
     parameters:
